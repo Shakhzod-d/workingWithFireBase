@@ -1,0 +1,7 @@
+.timeSlotContainer{
+    overflow-y: scroll;
+    /* border: 1px solid red; */
+}
+.loading{
+    width: 13rem;
+}

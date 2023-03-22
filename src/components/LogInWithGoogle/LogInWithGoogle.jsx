@@ -1,17 +1,47 @@
-import React from 'react'
-import { signInWithGoogle } from '../../firebase.js';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { signInWithGoogle } from "../../firebase";
+import { getInfoFromLC } from "../../Utils/Utils";
 
 const LogInWithGoogle = () => {
+  const [userInfo, setUserInfo] = React.useState(
+    getInfoFromLC({
+      name: "name",
+      email: "email",
+      profilePic: "profilePic",
+    })
+  );
+  const navigate = useNavigate();
+
+  const logInWithGoogle = () => {
+    signInWithGoogle();
+    window.setTimeout(() => goToHomePage(), 8000);
+  };
+
+  const goToHomePage = () => {
+    const {
+      name = "",
+      email = "",
+      profilePic = "",
+    } = getInfoFromLC({
+      name: "name",
+      email: "email",
+      profilePic: "profilePic",
+    });
+    setUserInfo({ name, email, profilePic });
+    window.setTimeout(() => navigate("/"), 3000);
+  };
+
   return (
     <div className="App">
-      <button class="login-with-google-btn" onClick={() => {}}>
+      <button className="login-with-google-btn" onClick={logInWithGoogle}>
         Sign in with Google
       </button>
-      <h1>{localStorage.getItem("name")}</h1>
-      <h1>{localStorage.getItem("email")}</h1>
-      <img src={localStorage.getItem("profilePic")} />
+      <h1>{userInfo.name && userInfo.name}</h1>
+      <h1>{userInfo.email && userInfo.email}</h1>
+      <img src={userInfo.profilePic && userInfo.profilePic} />
     </div>
-  )
-}
+  );
+};
 
-export default LogInWithGoogle
+export default LogInWithGoogle;

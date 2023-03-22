@@ -1,24 +1,16 @@
-import React from 'react'
-import TimeSlot from '../TimeSlot/TimeSlot'
+import React from "react";
+import TimeSlot from "../TimeSlot/TimeSlot";
 
 import "./TimeSlotContainer.css";
 
-const TimeSlotContainer = ({timeSlots}) => {
-
-
-  if(timeSlots.length === 0){
-    return <p className='loading'>loading...</p>
-  }
-    // console.log(timeSlots);
+const TimeSlotContainer = () => {
   return (
-    <div className='timeSlotContainer'>
-        <ul className='aviableTimeContainer'>
-            {timeSlots?.map((itemObj) => {
-                return <TimeSlot key={itemObj.id} {...itemObj} />
-            })}
-        </ul>
+    <div className="timeSlotContainer">
+      <ul className="aviableTimeContainer">
+        <TimeSlot />
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default TimeSlotContainer
+export default TimeSlotContainer;

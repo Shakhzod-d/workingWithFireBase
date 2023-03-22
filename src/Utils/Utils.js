@@ -1,9 +1,13 @@
-
-
 export const getInfoFromLC = (obj) => {
-    const name = localStorage.getItem(obj.name);
-    const email = localStorage.getItem(obj.email);
-    const profilePic = localStorage.getItem(obj.profilePic);
+  const {
+    name: _name = "",
+    email: _email = "",
+    profilePic: _profilePic = "",
+  } = obj;
 
-    return {name, email, profilePic};
-}
+  const name = localStorage.getItem(_name);
+  const email = localStorage.getItem(_email);
+  const profilePic = localStorage.getItem(_profilePic);
+
+  return { name, email, profilePic };
+};

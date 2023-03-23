@@ -19,13 +19,16 @@ const LogInWithGoogle = () => {
   };
 
   return (
-    <div className="App">
+    <div className="loginContainer">
       <button className="login-with-google-btn" onClick={logInWithGoogle}>
         Sign in with Google
       </button>
+      <br />
       <h1>{userInfo.name && userInfo.name}</h1>
+      <br />
       <h1>{userInfo.email && userInfo.email}</h1>
-      <img src={userInfo.profilePic && userInfo.profilePic} />
+      <br />
+      <img width={200} src={userInfo.profilePic && userInfo.profilePic} />
     </div>
   );
 };

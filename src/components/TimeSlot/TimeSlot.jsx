@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./TimeSlot.css";
 
 const TimeSlot = () => {
   const { timeSlots } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onClickItem = (itemId) => {
     const newTimeSlots = timeSlots.map((itemObj) => {
@@ -19,7 +21,8 @@ const TimeSlot = () => {
 
   const onClickTimeSlot = (id) => {
     // TODO: need to add some properities to specific object and modify then post back to fire store
-    console.log(id);
+    // console.log(id);
+    navigate("/userDetails");
   };
 
   if (timeSlots.length === 0) {

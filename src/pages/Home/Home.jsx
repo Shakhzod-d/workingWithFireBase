@@ -3,18 +3,15 @@ import React from "react";
 import MyCalendar from "../../components/Calendar/Calendar";
 import TimeSlotContainer from "../../components/TimeSlotContainer/TimeSlotContainer";
 import UserInfoAside from "../../components/UserInfoAside/UserInfoAside";
-
-import "./Home.css";
+import HomePageWrapper from "../../UI/HomePageWrapper/HomePageWrapper";
 
 const Home = () => {
   return (
-    <div className="container">
-      <div className="app">
+      <HomePageWrapper>
         <UserInfoAside />
         <MyCalendar />
         <TimeSlotContainer />
-      </div>
-    </div>
+      </HomePageWrapper>
   );
 };
 

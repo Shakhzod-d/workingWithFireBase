@@ -1,17 +1,14 @@
 import React from "react";
 import UserInfoAside from "../../components/UserInfoAside/UserInfoAside";
 import UserInputContainer from "../../components/UserInputContainer/UserInputContainer";
-
-import "./UserDetails.css";
+import HomePageWrapper from "../../UI/HomePageWrapper/HomePageWrapper";
 
 const UserDetails = () => {
   return (
-    <div className="parent">
-      <div className="userDetailsContainer">
+      <HomePageWrapper>
         <UserInfoAside />
         <UserInputContainer />
-      </div>
-    </div>
+      </HomePageWrapper>
   );
 };
 

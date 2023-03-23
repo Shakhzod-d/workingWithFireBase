@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../../firebase";
 import { getInfoFromLC } from "../../Utils/Utils";
+import "./LogInWithGoogle.css";
 
 const LogInWithGoogle = () => {
   const [userInfo, setUserInfo] = React.useState(
@@ -14,22 +15,7 @@ const LogInWithGoogle = () => {
   const navigate = useNavigate();
 
   const logInWithGoogle = () => {
-    signInWithGoogle();
-    window.setTimeout(() => goToHomePage(), 8000);
-  };
-
-  const goToHomePage = () => {
-    const {
-      name = "",
-      email = "",
-      profilePic = "",
-    } = getInfoFromLC({
-      name: "name",
-      email: "email",
-      profilePic: "profilePic",
-    });
-    setUserInfo({ name, email, profilePic });
-    window.setTimeout(() => navigate("/"), 3000);
+    signInWithGoogle(() => navigate("/"));
   };
 
   return (

@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 const provider = new GoogleAuthProvider();
-export const signInWithGoogle = () => {
+export const signInWithGoogle = (navigate) => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const name = result.user.displayName;
@@ -23,6 +23,7 @@ export const signInWithGoogle = () => {
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
       localStorage.setItem("profilePic", profilePic);
+      navigate();
     })
     .catch((error) => {
       console.log(error);

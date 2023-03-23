@@ -4,33 +4,31 @@ import { useNavigate } from "react-router-dom";
 import "./TimeSlot.css";
 
 const TimeSlot = () => {
-  const { timeSlots } = useSelector((state) => state);
+  const { timeSlots, eventTime } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onClickItem = (itemId) => {
     const newTimeSlots = timeSlots.map((itemObj) => {
       if (itemObj.id === itemId) {
+        // item title
+        dispatch({ type: "UPDATE_MEETING_HOUR", payload: itemObj.time });
         return { ...itemObj, isOpen: true };
       } else {
-        return itemObj;
+        return { ...itemObj, isOpen: false };
       }
     });
     dispatch({ type: "ADD_TIME_SLOTS", payload: newTimeSlots });
   };
 
-  const onClickTimeSlot = (id) => {
-    // TODO: need to add some properities to specific object and modify then post back to fire store
-    // console.log(id);
+  const onClickTimeSlot = () => {
     navigate("/userDetails");
   };
 
-  if (timeSlots.length === 0) {
-    return <h3>loading...</h3>;
-  }
 
   return (
     <>
+      <h3>{eventTime}</h3>
       {timeSlots?.map((itemObj) => {
         return (
           <li
@@ -44,7 +42,7 @@ const TimeSlot = () => {
             <div className={itemObj.isOpen ? "btnContainer" : ""}>
               {itemObj.isOpen && (
                 <button
-                  onClick={() => onClickTimeSlot(itemObj.id)}
+                  onClick={() => onClickTimeSlot()}
                   className="confirmBtn"
                 >
                   confirm

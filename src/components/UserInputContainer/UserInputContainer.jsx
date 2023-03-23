@@ -2,7 +2,7 @@ import React from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router";
 
-import Input from "@mui/joy/Input";
+import { Input } from "@mui/joy";
 import { Button } from "@mui/joy";
 import { db } from "../../firebase";
 
@@ -85,6 +85,7 @@ const UserInputContainer = () => {
       <label htmlFor="cars">What is the purpose of the meeting?*</label>
       <br />
       <select
+        className="options"
         value={selectValue || ""}
         onChange={(e) => setSelectValue(e.target.value)}
         name="cars"

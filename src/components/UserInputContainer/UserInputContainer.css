@@ -6,3 +6,9 @@
 .nameInput {
   width: 400px;
 }
+.options{
+    width: 400px;
+    height: 48px;
+    border: 1px solid rgba(173,219,255,255);
+    border-radius: 7px;
+}

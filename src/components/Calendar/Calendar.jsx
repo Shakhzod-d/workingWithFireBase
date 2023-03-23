@@ -4,8 +4,8 @@ import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 import Calendar from "react-calendar";
-
 import "react-calendar/dist/Calendar.css";
+import "./Calendar.css";
 
 const months = [
   "January",
@@ -40,8 +40,13 @@ export default function MyCalendar() {
   const onClickDay = (date) => {
     setValue(date);
     getUsers();
-    const test = `${dayNames[value.getDay()]} ${months[value.getMonth()]} `;
-    console.log(test);
+    const eventTime = `${dayNames[date.getDay()]} ${months[date.getMonth()]} ${date.getDate()}`;
+    // console.log(date.getFullYear());
+    const currentTime = {
+      eventTime,
+      currentYear: date.getFullYear()
+    }
+    dispatch({type: "UPDATE_EVENT_TIME", payload: currentTime});
   };
 
   const getUsers = async () => {
@@ -51,10 +56,10 @@ export default function MyCalendar() {
   };
 
   return (
-    <div>
+    <div className="calendar-container">
+      <h2>Select a Date & Time</h2>
+      <br />
       <Calendar onChange={onClickDay} value={value} />
-
-      {console.log(value.getDay())}
     </div>
   );
 }

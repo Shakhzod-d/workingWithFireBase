@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getInfoFromLC } from "../../Utils/Utils";
+import "./UserInfoAside.css";
 
 const UserInfoAside = () => {
   const [userInfo, setUserInfo] = React.useState(
@@ -14,7 +15,7 @@ const UserInfoAside = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="userInfoAsideContainer">
       <img
         src={userInfo && userInfo.profilePic}
         style={{ borderRadius: "50%" }}
